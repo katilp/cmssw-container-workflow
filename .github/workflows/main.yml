@@ -26,7 +26,7 @@ jobs:
           pwd
           cd workdir
           ls -l 
-          docker run --entrypoint /home/runner/work/cmssw-container-workflow/cmssw-container-workflow/workdir/myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8:latest 
+          docker run --entrypoint /home/runner/work/cmssw-container-workflow/cmssw-container-workflow/workdir/myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8_lowpupatch1 
 
       # upload output file
       - name: Upload artifact
