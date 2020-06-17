@@ -13,6 +13,9 @@ jobs:
           pwd
           ls -l
           touch onefile.txt
+          git clone https://github.com/katilp/cmssw-container-workflow.git workdir
+          cd workdir
+          ls -l
           chmod +x myscript.sh
       # run the container with the script in the repository
       - name: Not yet in a container
