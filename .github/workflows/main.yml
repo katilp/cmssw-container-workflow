@@ -5,7 +5,7 @@ on: [push,pull_request]
 jobs:
   test_workflow:
     runs-on: ubuntu-latest
-    name: My test workflow
+    name: My test workflow 
     steps:
       # chmod of the entrypoint script before getting to the container
       - name: Prepare
