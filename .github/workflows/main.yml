@@ -26,9 +26,7 @@ jobs:
           pwd
           cd workdir
           ls -l 
-          cp myscript.sh entrypoint.sh
-          ls -l
-          docker run --entrypoint /home/runner/work/cmssw-container-workflow/cmssw-container-workflow/workdir/myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms 
+          docker run --entrypoint /home/runner/work/cmssw-container-workflow/cmssw-container-workflow/workdir/myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8:latest 
 
       # upload output file
       - name: Upload artifact
