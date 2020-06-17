@@ -24,9 +24,11 @@ jobs:
         id: container
         run: | 
           pwd
-          ls -l
           cd workdir
-          docker run --entrypoint myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms 
+          ls -l 
+          cp myscript.sh entrypoint.sh
+          ls -l
+          # docker run --entrypoint myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms 
 
       # upload output file
       - name: Upload artifact
