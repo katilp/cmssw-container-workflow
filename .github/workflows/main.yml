@@ -24,13 +24,14 @@ jobs:
         id: container
         run: | 
           pwd
-          touch anotherfile.txt
           ls -l
-          docker run -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms /bin/bash ./myscript.sh
+          cd workdir
+          ls -l
+          docker run --entrypoint script.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms /bin/bash ./myscript.sh
 
       # upload output file
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: output
-          path: anotherfile.txt
+          path: onefile.txt
