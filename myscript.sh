@@ -2,7 +2,7 @@
 
 cd /home/cmsusr
 
-set  -e
+set   -e
 
 pwd
 ls -l
