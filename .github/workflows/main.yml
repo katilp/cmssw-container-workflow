@@ -13,6 +13,7 @@ jobs:
           pwd
           ls -l
           touch onefile.txt
+          chmod +x myscript.sh
       # run the container with the script in the repository
       - name: Not yet in a container
         # container: 
@@ -22,6 +23,7 @@ jobs:
           pwd
           touch anotherfile.txt
           ls -l
+          docker run -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms /bin/bash ./myscript.sh
 
       # upload output file
       - name: Upload artifact
