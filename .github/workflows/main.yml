@@ -28,9 +28,9 @@ jobs:
           pwd
           cd workdir
           ls -l 
-          # if old container without cd replace the original entrypoint as it did not work here (check why) and the script has all the rest
+          # replace the original entrypoint because "cannot make directory CMSSW_4_2_8_lowpupatch1 Permission denied"
           # docker run --entrypoint /home/runner/work/cmssw-container-workflow/cmssw-container-workflow/workdir/myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8_lowpupatch1 
-          docker run -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8_lowpupatch1 /bin/bash ./commands.sh
+          docker run -v $(pwd):$(pwd) -w /home/cmsusr gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8_lowpupatch1 /bin/bash ./commands.sh
 
       # upload output file
       - name: Upload artifact
