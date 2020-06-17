@@ -12,6 +12,8 @@ jobs:
         run: |
           pwd
           ls -l
+          git clone https://github.com/katilp/cmssw-container-workflow.git workdir
+          cd workdir
           chmod +x myscript.sh
           touch onefile.txt
           ls -l
@@ -23,6 +25,7 @@ jobs:
         run: | 
           pwd
           ls -l
+          cd workdir
           docker run --entrypoint myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms 
 
       # upload output file
@@ -30,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: output
-          path: onefile.txt
+          path: workdir/onefile.txt
