@@ -12,24 +12,20 @@ jobs:
         run: |
           pwd
           ls -l
-          # would have expected the files to be here but they are not so let's clone
+          # would have expected the files to be here but they are not so never mind, let's clone
           git clone https://github.com/katilp/cmssw-container-workflow.git workdir
           cd workdir
-          chmod +x myscript.sh
           chmod +x commands.sh
           touch onefile.txt
           ls -l
       # run the container with the script in the repository
       - name: Going to a container
-        # container: 
-        #   image: 'library/hello-world'
         id: container
         run: | 
           pwd
           cd workdir
           ls -l 
-          # replace the original entrypoint because "cannot make directory CMSSW_4_2_8_lowpupatch1 Permission denied"
-          # docker run --entrypoint /home/runner/work/cmssw-container-workflow/cmssw-container-workflow/workdir/myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8_lowpupatch1 
+          # full path for the script needed
           docker run -v $(pwd):$(pwd) -w /home/cmsusr gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8_lowpupatch1 /bin/bash /home/runner/work/cmssw-container-workflow/cmssw-container-workflow/workdir/commands.sh
 
       # upload output file
