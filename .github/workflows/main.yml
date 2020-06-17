@@ -12,22 +12,18 @@ jobs:
         run: |
           pwd
           ls -l
-          touch onefile.txt
-          git clone https://github.com/katilp/cmssw-container-workflow.git workdir
-          cd workdir
-          ls -l
           chmod +x myscript.sh
+          touch onefile.txt
+          ls -l
       # run the container with the script in the repository
-      - name: Not yet in a container
+      - name: Going to a container
         # container: 
         #   image: 'library/hello-world'
         id: container
         run: | 
           pwd
           ls -l
-          cd workdir
-          ls -l
-          docker run --entrypoint script.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms /bin/bash ./myscript.sh
+          docker run --entrypoint myscript.sh -v $(pwd):$(pwd) -w $(pwd) gitlab-registry.cern.ch/clange/cmssw-docker/slc5-cms 
 
       # upload output file
       - name: Upload artifact
