@@ -2,8 +2,5 @@
 
 pwd
 ls -l
-ls /
-cd /home/cmsusr
-
-pwd
-ls -l
+ls -l  /
+ls -l /mnt
