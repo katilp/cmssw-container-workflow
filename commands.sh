@@ -5,7 +5,7 @@ ls -l
 touch container_output.txt
 echo 'ls -l /home/cmsusr:'
 ls -l /home/cmsusr
-echo 'ls -l /home//runner/work/cmssw-container-workflow/cmssw-container-workflow:'
+echo 'ls -l /home/runner/work/cmssw-container-workflow/cmssw-container-workflow:'
 ls -l /home/runner/work/cmssw-container-workflow/cmssw-container-workflow
 
 # copy output file to the shared volume, changing owner needed

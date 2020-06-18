@@ -25,7 +25,7 @@ jobs:
           pwd
           ls -l 
           # full path for the script needed
-          docker run -v $(pwd):$(pwd) -w /home/cmsusr gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8_lowpupatch1 /bin/bash /home/runner/work/cmssw-container-workflow/cmssw-container-workflow/workdir/commands.sh
+          docker run -v $(pwd):$(pwd) -w /home/cmsusr gitlab-registry.cern.ch/clange/cmssw-docker/cmssw_4_2_8_lowpupatch1 /bin/bash $(pwd)/workdir/commands.sh
 
       # upload output file
       - name: Upload artifact
