@@ -27,14 +27,14 @@ jobs:
         argo version
     - name: Submit the argo test workflow
       run: |
-        argo submit -n argo  --wait argo-workflow.yaml
+        argo submit -n argo  --wait argo-workflow.yaml || echo ignore exit code
         argo get -n argo @latest
     - name: Check the output
       run: |
         argo logs -n argo @latest
         mkdir outputs
         echo Copy file with kubectl cp task-pv-pod:/mnt/data/ outputs/ :
-        kubectl cp task-pv-pod:/mnt/data/ outputs/
+        #kubectl cp task-pv-pod:/mnt/data/ outputs/
         echo ls -l :
         ls -l
     - name: Upload the ouput as a github artifact

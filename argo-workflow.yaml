@@ -18,7 +18,6 @@ spec:
         #source /opt/cms/entrypoint.sh
         sudo chown $USER /mnt/vol
         echo pwd `pwd`
-        chmod +x /mnt/vol/ascript.sh
         echo Check if env variables persist:
         echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
         echo Source a script
@@ -26,6 +25,20 @@ spec:
 
         echo Script sourced
         echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
+        
+        echo git versions:
+        which git
+        git --version
+        echo openssl versions:
+        which openssl 
+        openssl version || echo ignore exit code
+        
+        echo PATH before sourcing entrypoint: $PATH
+        echo Source a script
+        source /mnt/vol/entrypoint.sh
+
+        echo Script sourced
+        echo PATH after sourcing entrypoint; $PATH
       volumeMounts:
       - name: workdir
         mountPath: /mnt/vol
