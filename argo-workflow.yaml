@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: nanoaod-argo-
+spec:
+  entrypoint: nanoaod-argo
+  volumes:
+    - name: workdir
+      hostPath:
+        path: /mnt/data
+        type: DirectoryOrCreate
+  templates:
+  - name: nanoaod-argo
+    script:
+      image: cmsopendata/cmssw_5_3_32_vnc
+      command: [sh]
+      source: |
+        #source /opt/cms/entrypoint.sh
+        sudo chown $USER /mnt/vol
+        echo pwd `pwd`
+        chmod +x /mnt/vol/ascript.sh
+        echo Check if env variables persist:
+        echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
+        echo Source a script
+        source /mnt/vol/ascript.sh
+
+        echo Script sourced
+        echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
+      volumeMounts:
+      - name: workdir
+        mountPath: /mnt/vol
