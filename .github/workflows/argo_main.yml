@@ -35,8 +35,8 @@ jobs:
         mkdir outputs
         echo Copy file with kubectl cp task-pv-pod:/mnt/data/ outputs/ :
         #kubectl cp task-pv-pod:/mnt/data/ outputs/
-        echo ls -l :
-        ls -l
+        #echo ls -l :
+        #ls -l
     - name: Upload the ouput as a github artifact
       uses: actions/upload-artifact@v2
       with:

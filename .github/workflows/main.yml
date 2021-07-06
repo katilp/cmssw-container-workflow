@@ -17,7 +17,7 @@ jobs:
         id: container
         run: | 
           docker run -v $(pwd):/mnt/vol -w /home/cmsusr cmsopendata/cmssw_5_3_32_vnc /bin/bash /mnt/vol/commands.sh 
-          echo ls -l  `ls -l `
+          #echo ls -l  `ls -l `
           #cp output outputs
       # upload output file
       - name: Upload artifact
