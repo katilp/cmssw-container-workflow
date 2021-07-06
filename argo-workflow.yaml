@@ -22,13 +22,6 @@ spec:
         cd cmssw-container-workflow
         echo pwd `pwd`
         echo ls -l `ls -l`
-        echo Check if env variables persist:
-        echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
-        echo Source a script
-        source ascript.sh
-
-        echo Script sourced
-        echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
         
         echo git versions:
         which git
