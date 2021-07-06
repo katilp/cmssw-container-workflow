@@ -20,6 +20,8 @@ spec:
         echo pwd `pwd`
         git clone git://github.com/katilp/cmssw-container-workflow.git
         cd cmssw-container-workflow
+        echo pwd `pwd`
+        echo ls -l `ls -l`
         echo Check if env variables persist:
         echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
         echo Source a script
