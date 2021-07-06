@@ -31,7 +31,7 @@ spec:
         git --version
         echo openssl versions:
         which openssl 
-        openssl version || ignore exit code
+        openssl version || echo ignore exit code
         
         echo PATH before sourcing entrypoint: $PATH
         echo Source a script
