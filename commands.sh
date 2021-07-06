@@ -18,6 +18,6 @@ which git
 git --version
 echo openssl versions:
 which openssl 
-openssl version || ignore exit code
+openssl version || echo ignore exit code
 
 echo PATH before entrypoint $PATH
