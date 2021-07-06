@@ -42,7 +42,7 @@ spec:
         source entrypoint.sh
 
         echo Script sourced
-        echo PATH after sourcing entrypoint; $PATH
+        echo PATH after sourcing entrypoint: $PATH
       volumeMounts:
       - name: workdir
         mountPath: /mnt/vol
