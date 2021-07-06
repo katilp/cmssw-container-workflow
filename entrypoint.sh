@@ -18,6 +18,7 @@ echo PATH: $PATH
 export LD_LIBRARY_PATH=${UPDATE_PATH}/lib:${UPDATE_PATH}/lib64:${LD_LIBRARY_PATH}
 export PATH=${UPDATE_PATH}/bin:${PATH}
 
+echo From entrypoint after new settings:
 echo LD_LIBRARY_PATH: $LD_LIBRARY_PATH
 echo PATH: $PATH
 
