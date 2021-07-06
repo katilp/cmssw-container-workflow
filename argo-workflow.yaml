@@ -18,10 +18,12 @@ spec:
         #source /opt/cms/entrypoint.sh
         sudo chown $USER /mnt/vol
         echo pwd `pwd`
+        git clone git://github.com/katilp/cmssw-container-workflow.git
+        cd cmssw-container-workflow
         echo Check if env variables persist:
         echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
         echo Source a script
-        source /mnt/vol/ascript.sh
+        source ascript.sh
 
         echo Script sourced
         echo DUMMY_SET_IN_SCRIPT: $DUMMY_SET_IN_SCRIPT
@@ -35,7 +37,7 @@ spec:
         
         echo PATH before sourcing entrypoint: $PATH
         echo Source a script
-        source /mnt/vol/entrypoint.sh
+        source entrypoint.sh
 
         echo Script sourced
         echo PATH after sourcing entrypoint; $PATH
