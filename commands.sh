@@ -21,3 +21,15 @@ which openssl
 openssl version || echo ignore exit code
 
 echo PATH before entrypoint $PATH
+
+source /mnt/vol/entrypoint.sh
+
+echo PATH after entrypoint $PATH
+
+echo git versions:
+which git
+git --version
+echo openssl versions:
+which openssl 
+openssl version || echo ignore exit code
+
