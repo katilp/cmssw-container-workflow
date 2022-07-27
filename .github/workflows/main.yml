@@ -17,6 +17,8 @@ jobs:
         id: container
         run: | 
           chmod +x commands.sh
+          echo pwd `pwd`
+          echo ls -l `ls -l`
           docker run --rm --entrypoint="" -w /home/cmsusr -v ${PWD}:/code cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493 bash -c commands.sh 
           echo ls -l  `ls -l `
           cp output outputs
