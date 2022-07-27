@@ -17,7 +17,7 @@ jobs:
         id: container
         run: | 
           chmod +x commands.sh
-          docker run --rm --entrypoint="" -w /home/cmsusr -v ${PWD}:/code gitlab-registry.cern.ch/cms-cloud/python-vnc:latest bash -c ./commands.sh 
+          docker run --rm --entrypoint="" -w /home/cmsusr -v ${PWD}:/code cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493 bash -c ./commands.sh 
           echo ls -l  `ls -l `
           cp output outputs
       # upload output file
