@@ -27,6 +27,7 @@ jobs:
         argo version
     - name: Copy commands to shared volume
       run: |
+        sleep 20
         kubectl get pod
         kubectl cp commands.sh task-pv-pod:/mnt/data      
     - name: Submit the argo test workflow
