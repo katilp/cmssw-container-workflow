@@ -11,8 +11,8 @@ pwd
 echo ls -l:
 ls -l
 
-git clone https://github.com/cms-opendata-workshop/workshop2021-poetpayload-cloud.git
-cd workshop2021-poetpayload-cloud/PhysObjectExtractor
+git clone -b odws2022-ttbaljets-prod https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
+cd PhysObjectExtractorTool/PhysObjectExtractor
 scram b
 
 cmsRun python/poet_cfg_cloud.py True > poet.out
