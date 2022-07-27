@@ -2,7 +2,7 @@ echo git versions:
 which git
 git --version
 
-git clone git://github.com/cms-opendata-workshop/workshop2021-poetpayload-cloud.git
+git clone https://github.com/cms-opendata-workshop/workshop2021-poetpayload-cloud.git
 cd workshop2021-poetpayload-cloud/PhysObjectExtractor
 scram b
 
