@@ -2,6 +2,15 @@ echo git versions:
 which git
 git --version
 
+echo PATH:
+echo $PATH
+
+echo pwd:
+pwd
+
+echo ls -l:
+ls -l
+
 git clone https://github.com/cms-opendata-workshop/workshop2021-poetpayload-cloud.git
 cd workshop2021-poetpayload-cloud/PhysObjectExtractor
 scram b
