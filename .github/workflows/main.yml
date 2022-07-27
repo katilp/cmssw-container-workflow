@@ -22,7 +22,7 @@ jobs:
           mv commands.sh shared
           docker run --rm -v ${PWD}/shared:/code cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493 bash -c /code/commands.sh 
           echo ls -l  `ls -l `
-          cp shared/output outputs
+          cp shared/output/* outputs
       # upload output file
       - name: Upload artifact
         uses: actions/upload-artifact@v2
