@@ -11,6 +11,8 @@ pwd
 echo ls -l:
 ls -l
 
+sudo chown $USER /mnt/vol
+
 git clone -b odws2022-ttbaljets-prod https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
 cd PhysObjectExtractorTool/PhysObjectExtractor
 scram b
@@ -18,7 +20,7 @@ scram b
 cmsRun python/poet_cfg.py True > poet.out
 mkdir output
 cp poet.out ouput
-cp mymyoutput.root output
+cp myoutput.root output
 mv poet.out /mnt/vol
 mv myoutput.root /mnt/vol/
 
