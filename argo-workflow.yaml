@@ -12,7 +12,7 @@ spec:
   templates:
   - name: nanoaod-argo
     script:
-      image: gitlab-registry.cern.ch/cms-cloud/python-vnc:latest
+      image: cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493
       command: [bash, /mnt/vol/commands.sh]        
       volumeMounts:
       - name: workdir
