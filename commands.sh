@@ -16,9 +16,9 @@ cd PhysObjectExtractorTool/PhysObjectExtractor
 scram b
 
 cmsRun python/poet_cfg.py True > poet.out
-mkdir output
-cp poet.out ouput
-cp myoutput.root output
+mkdir /code/output
+cp poet.out /code/ouput
+cp myoutput.root /code/output
 # if statement only needed for the docker workflow which does not use /mnt/vol
 if [ -d /mnt/vol ]; then
   mv poet.out /mnt/vol
