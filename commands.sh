@@ -15,7 +15,7 @@ git clone -b odws2022-ttbaljets-prod https://github.com/cms-opendata-analyses/Ph
 cd PhysObjectExtractorTool/PhysObjectExtractor
 scram b
 
-cmsRun python/poet_cfg_cloud.py True > poet.out
+cmsRun python/poet_cfg.py True > poet.out
 mkdir output
 cp poet.out ouput
 cp mymyoutput.root output
