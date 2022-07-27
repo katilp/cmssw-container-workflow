@@ -1,29 +1,12 @@
-#!/bin/sh -l
-# echo pwd `pwd`: /home/cmsusr/CMSSW_5_3_32/src
-# echo $USER cmsusr
-echo pwd `pwd`
-sudo chown $USER /mnt/vol
-
 echo git versions:
 which git
 git --version
-echo openssl versions:
-which openssl 
-openssl version || echo ignore exit code
 
-echo PATH before sourcing entrypoint: $PATH
-echo LD_LIBRARY_PATH before: $LD_LIBRARY_PATH
-echo Source a script
-source /mnt/vol/entrypoint.sh
+git clone git://github.com/cms-opendata-workshop/workshop2021-poetpayload-cloud.git
+cd workshop2021-poetpayload-cloud/PhysObjectExtractor
+scram b
 
-echo Script sourced
-echo PATH after sourcing entrypoint: $PATH
-echo LD_LIBRARY_PATH after: $LD_LIBRARY_PATH
-
-echo git versions:
-which git
-git --version
-echo openssl versions:
-which openssl 
-openssl version || echo ignore exit code
+cmsRun python/poet_cfg_cloud.py True > poet.out
+mv poet.out /mnt/vol
+mv myoutput.root /mnt/vol/
 
