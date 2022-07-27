@@ -16,9 +16,9 @@ jobs:
       - name: Going to a container
         id: container
         run: | 
-          docker run -v $(pwd):/mnt/vol -w /home/cmsusr cmsopendata/cmssw_5_3_32_vnc /bin/bash /mnt/vol/commands.sh 
-          #echo ls -l  `ls -l `
-          #cp output outputs
+          docker run --rm --entrypoint="" -v ${PWD}:/code gitlab-registry.cern.ch/cms-cloud/python-vnc:latest bash -c ./commands.sh 
+          echo ls -l  `ls -l `
+          cp output outputs
       # upload output file
       - name: Upload artifact
         uses: actions/upload-artifact@v2
