@@ -13,9 +13,6 @@ jobs:
       run: |
         minikube start
         n=0; until ((n >= 60)); do kubectl -n default get serviceaccount default -o name && break; n=$((n + 1)); sleep 1; done; ((n < 60))
-    - name: Set up persistent volume and storage pod
-      run: |
-        kubectl apply -f volumes.yaml   
     - name: Set up argo
       run: |
         kubectl create ns argo
@@ -25,9 +22,12 @@ jobs:
         chmod +x argo-linux-amd64 
         sudo mv ./argo-linux-amd64 /usr/local/bin/argo
         argo version   
+    - name: Set up persistent volume and storage pod
+      run: |
+        kubectl apply -f volumes.yaml -n argo   
     - name: Submit the argo test workflow
       run: |
-        argo submit -n argo  --wait argo-workflow.yaml || echo ignore exit code
+        argo submit -n argo  --wait argo-workflow.yaml
         argo get -n argo @latest
     - name: Check the output
       run: |
