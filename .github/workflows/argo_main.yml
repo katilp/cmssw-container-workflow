@@ -24,7 +24,7 @@ jobs:
         argo version   
     - name: Set up persistent volume and storage pod
       run: |
-        kubectl apply -f volumes.yaml -n argo   
+        kubectl apply -f volumes.yaml   
     - name: Submit the argo test workflow
       run: |
         argo submit -n argo  --wait argo-workflow.yaml
