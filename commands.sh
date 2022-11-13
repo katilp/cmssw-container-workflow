@@ -1,29 +1,30 @@
-#!/bin/sh -l
-# echo pwd `pwd`: /home/cmsusr/CMSSW_5_3_32/src
-# echo $USER cmsusr
-echo pwd `pwd`
-sudo chown $USER /mnt/vol
-
 echo git versions:
 which git
 git --version
-echo openssl versions:
-which openssl 
-openssl version || echo ignore exit code
 
-echo PATH before sourcing entrypoint: $PATH
-echo LD_LIBRARY_PATH before: $LD_LIBRARY_PATH
-echo Source a script
-source /mnt/vol/entrypoint.sh
+echo PATH:
+echo $PATH
 
-echo Script sourced
-echo PATH after sourcing entrypoint: $PATH
-echo LD_LIBRARY_PATH after: $LD_LIBRARY_PATH
+echo pwd:
+pwd
 
-echo git versions:
-which git
-git --version
-echo openssl versions:
-which openssl 
-openssl version || echo ignore exit code
+echo ls -l:
+ls -l
+
+
+git clone -b odws2022-ttbaljets-prod https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
+cd PhysObjectExtractorTool/PhysObjectExtractor
+scram b
+
+cmsRun python/poet_cfg.py True > poet.out 2>&1
+
+# /code/ouput and the if statement only needed for the docker workflow which does not use /mnt/vol
+mkdir /code/output
+cp poet.out /code/ouput
+cp myoutput.root /code/output
+if [ -d /mnt/vol ]; then
+  mv poet.out /mnt/vol
+  mv myoutput.root /mnt/vol/
+fi
+
 

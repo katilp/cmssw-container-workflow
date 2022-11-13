@@ -13,9 +13,6 @@ jobs:
       run: |
         minikube start
         n=0; until ((n >= 60)); do kubectl -n default get serviceaccount default -o name && break; n=$((n + 1)); sleep 1; done; ((n < 60))
-    - name: Set up persistent volume and storage pod
-      run: |
-        kubectl apply -f volumes.yaml   
     - name: Set up argo
       run: |
         kubectl create ns argo
@@ -24,19 +21,22 @@ jobs:
         gunzip argo-linux-amd64.gz
         chmod +x argo-linux-amd64 
         sudo mv ./argo-linux-amd64 /usr/local/bin/argo
-        argo version
+        argo version   
+    - name: Set up persistent volume and storage pod
+      run: |
+        kubectl apply -f volumes.yaml   
     - name: Submit the argo test workflow
       run: |
-        argo submit -n argo  --wait argo-workflow.yaml || echo ignore exit code
+        argo submit -n argo  --wait argo-workflow.yaml
         argo get -n argo @latest
     - name: Check the output
       run: |
         argo logs -n argo @latest
         mkdir outputs
         echo Copy file with kubectl cp task-pv-pod:/mnt/data/ outputs/ :
-        #kubectl cp task-pv-pod:/mnt/data/ outputs/
-        #echo ls -l :
-        #ls -l
+        kubectl cp task-pv-pod:/mnt/data/ outputs/
+        echo ls -l :
+        ls -l
     - name: Upload the ouput as a github artifact
       uses: actions/upload-artifact@v2
       with:
