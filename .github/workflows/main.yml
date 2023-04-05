@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test workflow with docker run 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Prepare
         run: |
           mkdir outputs
@@ -20,7 +20,7 @@ jobs:
           mkdir shared
           chmod 777 shared
           mv commands.sh shared
-          docker run --rm -v ${PWD}/shared:/code cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493 bash -c /code/commands.sh 
+          docker run --rm -v ${PWD}/shared:/code  gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cmssw_10_6_30-slc7_amd64_gcc700 bash -c /code/commands.sh
           echo ls -l  `ls -l `
           cp shared/output/* outputs
       # upload output file
