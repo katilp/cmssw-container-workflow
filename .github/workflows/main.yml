@@ -12,6 +12,7 @@ jobs:
       - name: Prepare
         run: |
           mkdir outputs
+          echo ls -l  `ls -l `
       # run the container with the script in the repository
       - name: Going to a container
         id: container
