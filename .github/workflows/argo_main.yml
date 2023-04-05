@@ -1,23 +1,20 @@
 name: Test minikube + argo 
-on:
-  pull_request:
-    branches:
-    - master
+on: workflow_dispatch
 jobs:
   job1:
     runs-on: ubuntu-latest
     name: minikube + argo
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Start a minikube cluster
       run: |
         minikube start
         n=0; until ((n >= 60)); do kubectl -n default get serviceaccount default -o name && break; n=$((n + 1)); sleep 1; done; ((n < 60))
     - name: Set up argo
-      run: |
+      run: | #from https://github.com/argoproj/argo-workflows/releases/tag/v3.4.3
         kubectl create ns argo
-        kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/quick-start-postgres.yaml
-        curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.1.1/argo-linux-amd64.gz
+        kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.4.3/install.yaml
+        curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.3/argo-linux-amd64.gz
         gunzip argo-linux-amd64.gz
         chmod +x argo-linux-amd64 
         sudo mv ./argo-linux-amd64 /usr/local/bin/argo
@@ -38,7 +35,7 @@ jobs:
         echo ls -l :
         ls -l
     - name: Upload the ouput as a github artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: output
         path: outputs/ 
