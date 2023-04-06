@@ -27,11 +27,11 @@ ls -l
 # cp poet.out /code/ouput
 # cp myoutput.root /code/output
 
-# outputs dir comes from the shared volume
+# outputs dir comes from the shared volume (but is not writable..)
 # touch /code/outputs/some.out
 # this would happen if /mnt/vol is created
 if [ -d /mnt/vol ]; then
-  touch /mnt/vol/outputs/some.out
+  touch /mnt/vol/some.out
   # mv poet.out /mnt/vol
   # mv myoutput.root /mnt/vol/
 fi
