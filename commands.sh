@@ -1,3 +1,7 @@
+# make the mounted volume writable
+sudo chown $USER /mnt/vol
+ls -l /mnt/vol
+
 echo git versions:
 which git
 git --version
