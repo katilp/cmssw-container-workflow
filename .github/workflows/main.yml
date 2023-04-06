@@ -8,7 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Test workflow with docker run 
     steps:
-      - uses: actions/checkout@v2
+      - name: Maximize build space
+        uses: AdityaGarg8/remove-unwanted-software@v1
+        with:
+          remove-android: 'true'
+          remove-dotnet: 'true'
+          remove-haskell: 'true'
+      - uses: actions/checkout@v3
       - name: Prepare
         run: |
           mkdir outputs
@@ -17,12 +23,10 @@ jobs:
         id: container
         run: | 
           chmod +x commands.sh
-          mkdir shared
-          chmod 777 shared
-          mv commands.sh shared
-          docker run --rm -v ${PWD}/shared:/code cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493 bash -c /code/commands.sh 
-          echo ls -l  `ls -l `
-          cp shared/output/* outputs
+          docker run --rm -v ${PWD}:/mnt/vol  gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cmssw_10_6_30-slc7_amd64_gcc700:2023-04-05-131be08c bash -c /mnt/vol/commands.sh
+          echo ls -l `ls -l`
+          echo ls -l outputs `ls -l outputs`
+          cp *out outputs/
       # upload output file
       - name: Upload artifact
         uses: actions/upload-artifact@v2
