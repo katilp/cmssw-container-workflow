@@ -27,7 +27,7 @@ ls -l
 # touch /code/outputs/some.out
 # this would happen if /mnt/vol is created
 if [ -d /mnt/vol ]; then
-  touch /mnt/vol/ouputs/some.out
+  touch /mnt/vol/outputs/some.out
   # mv poet.out /mnt/vol
   # mv myoutput.root /mnt/vol/
 fi

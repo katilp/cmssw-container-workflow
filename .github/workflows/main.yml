@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Test workflow with docker run 
     steps:
-      - name: Check original disk space
-        run: |
-          df -h
       - name: Maximize build space
         uses: AdityaGarg8/remove-unwanted-software@v1
         with:
@@ -20,7 +17,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Prepare
         run: |
-          df -h
           mkdir outputs
       # run the container with the script in the repository
       - name: Going to a container
