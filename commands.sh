@@ -22,8 +22,12 @@ ls -l
 # mkdir /code/output
 # cp poet.out /code/ouput
 # cp myoutput.root /code/output
+
+# outputs dir comes from the shared volume
+touch /code/outputs/some.out
+# this would happen if /mnt/vol is created
 if [ -d /mnt/vol ]; then
-  touch /mnt/vol/some.out
+  touch some.out
   # mv poet.out /mnt/vol
   # mv myoutput.root /mnt/vol/
 fi
