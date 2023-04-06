@@ -24,10 +24,10 @@ ls -l
 # cp myoutput.root /code/output
 
 # outputs dir comes from the shared volume
-touch /code/outputs/some.out
+# touch /code/outputs/some.out
 # this would happen if /mnt/vol is created
 if [ -d /mnt/vol ]; then
-  touch some.out
+  touch /mnt/vol/ouputs/some.out
   # mv poet.out /mnt/vol
   # mv myoutput.root /mnt/vol/
 fi
