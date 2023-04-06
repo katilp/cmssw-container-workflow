@@ -27,9 +27,6 @@ jobs:
         id: container
         run: | 
           chmod +x commands.sh
-      #    # mkdir shared
-      #    chmod 777 shared
-      #    mv commands.sh shared
           docker run --rm -v ${PWD}:/mnt/vol  gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cmssw_10_6_30-slc7_amd64_gcc700:2023-04-05-131be08c bash -c /mnt/vol/commands.sh
           echo ls -l outputs `ls -l outputs`
       # upload output file
